@@ -42,6 +42,10 @@ public class LeadController {
             return new RedirectView("/");
         }
 
+        if(!BCrypt.checkpw(password,siteUser.getPassword())){
+            return new RedirectView("/");
+        }
+
         //Store in session location
         HttpSession session = request.getSession();
         session.setAttribute("userName", userName);
